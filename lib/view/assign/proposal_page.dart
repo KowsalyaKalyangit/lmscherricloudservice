@@ -50,16 +50,16 @@ class _ProposalPageState extends State<ProposalPage> {
 
   func() {
     getProposalRelatedController
-        .getproposalrelatedController(leadid: widget.id.toString())
-        .then((value) {
-      setState(() {
+        .getproposalrelatedController(leadid: widget.id.toString());
+       
+     
         addAssignDetailsController.getCountry().then((value) {
           setState(() {
-            countryname = addAssignDetailsController
+             addAssignDetailsController
                 .getprofileUpdatecountry[0].data[0].countryId;
           });
-        });
-      });
+         
+     
     });
     proposalRelatedController.proposalrelatedController().then(
       (value) {
@@ -98,7 +98,7 @@ class _ProposalPageState extends State<ProposalPage> {
         backgroundColor: screenbackground,
         body: Obx(() {
           if (proposalRelatedController.isproposalreletadLoad.value ||
-              getProposalRelatedController.isgetproposalreletadLoad.value ||
+              // getProposalRelatedController.isgetproposalreletadLoad.value ||
               addAssignDetailsController.isCountryLoading.value ||
               proposalStatusController.isproposalstatusLoad.value
         ||proposalCurrencyController.isproposalCurrencyLoad.value||
@@ -108,7 +108,7 @@ class _ProposalPageState extends State<ProposalPage> {
               child: CircularProgressIndicator(),
             );
           } else if (proposalRelatedController.getleadstypeDetails.isEmpty ||
-              getProposalRelatedController.getproposalrelatedDetails.isEmpty ||
+             // getProposalRelatedController.getproposalrelatedDetails.isEmpty ||
               addAssignDetailsController.getprofileUpdatecountry.isEmpty ||
               proposalStatusController.getproposalstatus.isEmpty||
               proposalCurrencyController.getproposalCurrency.isEmpty||

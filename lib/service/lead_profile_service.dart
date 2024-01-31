@@ -18,7 +18,7 @@ class LeadProfileService {
     try {
       var data = {
         "dashboard":"getleadprofiledetails",
-        "staffid":staffid??""
+        "staffid":staffid??''
         
       };
         var jsonencode=jsonEncode(data);

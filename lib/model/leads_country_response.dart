@@ -50,8 +50,8 @@ class Datum {
     });
 
     factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        countryId: json["country_id"],
-        countryName: json["country_name"],
+        countryId: json["country_id"]??'',
+        countryName: json["country_name"]??'',
     );
 
     Map<String, dynamic> toJson() => {

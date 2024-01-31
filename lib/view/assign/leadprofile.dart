@@ -28,7 +28,7 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
   LeadsprofileController leadProfileController =
       Get.put(LeadsprofileController());
   var dropdownvalue;
-  String countryname= "India";
+  //String countryname= "India";
   @override
   void initState() {
     fetchdata();
@@ -38,18 +38,24 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
   fetchdata() async {
     log('dkfnjdshfjksl');
    
+   
     leadProfileController.leadprofileController();
+     log(leadProfileController.countryname.value.toString());
     addAssignDetailsController.getCountry().then((value) {
       setState(() {
-        countryname = addAssignDetailsController
-            .getprofileUpdatecountry[0].data[0].countryId;
+       addAssignDetailsController
+            .getprofileUpdatecountry[0].data[0].countryName; 
       });
     });
     addAssignDetailsController.getStatus().then((value) {
-      statusname = addAssignDetailsController.getstatusLead[0].data[0].id;
+    setState(() {
+       addAssignDetailsController.getstatusLead[0].data[0].name;
+    });
     });
     addAssignDetailsController.getSourceLeads().then((value) {
-      sourcename = addAssignDetailsController.getSourceLead[0].data[0].id;
+       setState(() {
+         addAssignDetailsController.getSourceLead[0].data[0].name;
+       });
     });
   }
 
@@ -593,7 +599,7 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                   SizedBox(
                     height: 1.0.hp,
                   ),
-                  Row(
+         leadProfileController.countryname.value==null|| leadProfileController.countryname.value.isEmpty|| leadProfileController.countryname.value==''?Container():          Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
@@ -609,7 +615,7 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                           ),
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton<String>(
-                              value: countryname,
+                              value:  leadProfileController.countryname.value,
                               style: GoogleFonts.jost(
                                   textStyle: TextStyle(
                                       fontSize: 10.00.sp,
@@ -624,7 +630,11 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                               onChanged: (newValue) {
                                 setState(() {
                                   if (newValue != null) {
-                                   countryname =
+
+ 
+
+
+                                   leadProfileController.countryname.value =
                                         newValue.toString();
                                     print('newwvalue');
                                     print(newValue.toString());
@@ -643,7 +653,7 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                                       .getprofileUpdatecountry[0].data
                                       .map<DropdownMenuItem<String>>((value) {
                                       return DropdownMenuItem<String>(
-                                        value: value.countryId.toString(),
+                                        value: value.countryName,
                                         child: Container(
                                             margin: const EdgeInsets.only(
                                                 left: 0, right: 4),
@@ -737,7 +747,7 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                           ),
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton<String>(
-                              value: statusname,
+                              value: leadProfileController.status.value,
                               style: GoogleFonts.jost(
                                   textStyle: TextStyle(
                                       fontSize: 10.00.sp,
@@ -752,7 +762,7 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                               onChanged: (newValue) {
                                 setState(() {
                                   if (newValue != null) {
-                                    statusname = newValue.toString();
+                                    leadProfileController.status.value = newValue.toString();
                                     print('newwvalue');
                                     print(newValue.toString());
                                   }
@@ -770,7 +780,7 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                                       .getstatusLead[0].data
                                       .map<DropdownMenuItem<String>>((value) {
                                       return DropdownMenuItem<String>(
-                                        value: value.id.toString(),
+                                        value: value.name.toString(),
                                         child: Container(
                                             margin: const EdgeInsets.only(
                                                 left: 0, right: 4),
@@ -816,7 +826,7 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                           ),
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton<String>(
-                              value: sourcename,
+                              value: leadProfileController.source.value,
                               style: GoogleFonts.jost(
                                   textStyle: TextStyle(
                                       fontSize: 10.00.sp,
@@ -831,7 +841,7 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                               onChanged: (newValue) {
                                 setState(() {
                                   if (newValue != null) {
-                                    sourcename = newValue.toString();
+                                     leadProfileController.source.value = newValue.toString();
                                     print('newwvalue');
                                     print(newValue.toString());
                                   }
@@ -849,7 +859,7 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                                       .getSourceLead[0].data
                                       .map<DropdownMenuItem<String>>((value) {
                                       return DropdownMenuItem<String>(
-                                        value: value.id.toString(),
+                                        value: value.name.toString(),
                                         child: Container(
                                             margin: const EdgeInsets.only(
                                                 left: 0, right: 4),
@@ -870,12 +880,9 @@ class _LeadProfilePageState extends State<LeadProfilePage> {
                     padding: const EdgeInsets.all(8.0),
                     child: ButtonIconButton(
                       press: () async {
-                        //  if(addAssignDetailsController.name.text.isEmpty){
-                        //   Fluttertoast.showToast(msg: 'please enter all fields');
-
-                        //  }
-                        //  else{
-                        //  }
+              setState(() {
+                         leadProfileController.leadprofileEditController(leadid: widget.id.toString());
+              });
                       },
                       bgcolor: appcolor,
                       bordercolor: appcolor,

@@ -1,27 +1,27 @@
 // To parse this JSON data, do
 //
-//     final proposalStatusModel = proposalStatusModelFromJson(jsonString);
+//     final leadsProfileEditModel = leadsProfileEditModelFromJson(jsonString);
 
 import 'dart:convert';
 
-ProposalStatusModel proposalStatusModelFromJson(String str) => ProposalStatusModel.fromJson(json.decode(str));
+LeadsProfileEditModel leadsProfileEditModelFromJson(String str) => LeadsProfileEditModel.fromJson(json.decode(str));
 
-String proposalStatusModelToJson(ProposalStatusModel data) => json.encode(data.toJson());
+String leadsProfileEditModelToJson(LeadsProfileEditModel data) => json.encode(data.toJson());
 
-class ProposalStatusModel {
+class LeadsProfileEditModel {
     int success;
     String status;
     String message;
     List<Datum> data;
 
-    ProposalStatusModel({
+    LeadsProfileEditModel({
         required this.success,
         required this.status,
         required this.message,
         required this.data,
     });
 
-    factory ProposalStatusModel.fromJson(Map<String, dynamic> json) => ProposalStatusModel(
+    factory LeadsProfileEditModel.fromJson(Map<String, dynamic> json) => LeadsProfileEditModel(
         success: json["success"],
         status: json["status"],
         message: json["message"],
@@ -37,21 +37,17 @@ class ProposalStatusModel {
 }
 
 class Datum {
-    String name;
-    String value;
+    String update;
 
     Datum({
-        required this.name,
-        required this.value,
+        required this.update,
     });
 
     factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        name: json["name"]??'',
-        value: json["value"]??'',
+        update: json["update"],
     );
 
     Map<String, dynamic> toJson() => {
-        "name": name,
-        "value": value,
+        "update": update,
     };
 }

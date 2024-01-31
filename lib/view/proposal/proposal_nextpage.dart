@@ -67,7 +67,7 @@ class _ProposalNextPageState extends State<ProposalNextPage> {
       Get.put(ProposalSpeedAmtController());
   ProposalLoadAmtController proposalLoadAmtController =
       Get.put(ProposalLoadAmtController());
-      ProposalOperationAmtController proposalOperationAmtController=Get.put(ProposalOperationAmtController());
+      
   ProposalTravelAmtController proposalTravelAmtController =
       Get.put(ProposalTravelAmtController());
 
@@ -428,23 +428,23 @@ class _ProposalNextPageState extends State<ProposalNextPage> {
                                   fontWeight: FontWeight.w800)),
                         ),
                         Obx(() {
-                          if (getAddItemListController.isadditemlistLoad.value &&
-                              proposalOperationAmtController.isproposaloperationamtLoad.value
-                                   &&
+                          if (getAddItemListController.isadditemlistLoad.value ||
+                              proposalOperationController.isproposaloperationamtLoad.value
+                                   ||
                               proposalLoadAmtController
-                                  .isproposaLoadamtLoad.value &&
+                                  .isproposaLoadamtLoad.value ||
                               proposalSpeedAmtController
-                                  .isproposaspeedamtLoad.value &&
+                                  .isproposaspeedamtLoad.value ||
                               proposalTravelAmtController
                                   .isproposltravelamtLoad.value) {
                             return Text('0');
-                          } else if (getAddItemListController.getadditemproposal.isEmpty &&
-                              proposalOperationAmtController
-                                  .getproposaloperationamt.isEmpty &&
+                          } else if (getAddItemListController.getadditemproposal.isEmpty ||
+                              proposalOperationController
+                                  .getproposaloperationamt.isEmpty ||
                               proposalLoadAmtController
-                                  .getproposalloadamt.isEmpty &&
+                                  .getproposalloadamt.isEmpty ||
                               proposalSpeedAmtController
-                                  .getproposalspeedamt.isEmpty &&
+                                  .getproposalspeedamt.isEmpty ||
                               proposalTravelAmtController
                                   .getproposaltravelamt.isEmpty) {
                             return Text('ccc');
@@ -1544,7 +1544,7 @@ class _ProposalNextPageState extends State<ProposalNextPage> {
                                     print(newValue.toString());
                                     print('clickkkk');
                                   
-                                    proposalOperationAmtController
+                                    proposalOperationController
                                         .proposalOperationAmtController(
                                             operationid: proposalOperation,
                                             typeid: getAddItemListController

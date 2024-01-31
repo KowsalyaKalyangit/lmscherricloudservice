@@ -24,7 +24,7 @@ class LeadsProfileModel {
     });
 
     factory LeadsProfileModel.fromJson(Map<String, dynamic> json) => LeadsProfileModel(
-        success: json["success"],
+        success: json["success"]??'',
         status: json["status"],
         message: json["message"],
         totalLeads: json["TotalLeads"],
@@ -76,21 +76,21 @@ class Datum {
     });
 
     factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        id: json["id"],
-        name: json["name"],
-        position: json["position"],
-        email: json["email"],
-        phonenumber: json["phonenumber"],
-        customer: json["customer"],
-        leadValue: json["lead_value"],
-        description: json["description"],
-        address: json["address"],
-        city: json["city"],
-        state: json["state"],
-        country: json["country"],
-        zip: json["zip"],
-        source: json["source"],
-        status: json["status"],
+        id: json["id"]??'',
+        name: json["name"]??'',
+        position: json["position"]??'',
+        email: json["email"]??'',
+        phonenumber: json["phonenumber"]??'',
+        customer: json["customer"]??"",
+        leadValue: json["lead_value"]??'',
+        description: json["description"]??'',
+        address: json["address"]??'',
+        city: json["city"]??'',
+        state: json["state"]??'',
+        country: json["country"]??'',
+        zip: json["zip"]??'',
+        source: json["source"]??'',
+        status: json["status"]??'',
     );
 
     Map<String, dynamic> toJson() => {

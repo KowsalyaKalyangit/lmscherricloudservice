@@ -134,7 +134,10 @@ class AddAssignDetailsController extends GetxController {
         print('res---------------$response');
         _profileupdatecountry.add(response);
        
-           
+        //  for( var i=0;i< _profileupdatecountry[0].data.length;i++){
+        //   log('cccuntry-----------');
+        //     log(_profileupdatecountry[0].data.toSet().toList().length.toString());
+        //  }
       
         isCountryLoading(false);
         
