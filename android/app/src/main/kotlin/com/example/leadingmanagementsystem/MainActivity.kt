@@ -1,4 +1,4 @@
-package com.example.leadingmanagementsystem
+package com.example.lmsservice
 
 import io.flutter.embedding.android.FlutterActivity
 

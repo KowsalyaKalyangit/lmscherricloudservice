@@ -5,5 +5,6 @@ class Constants {
   static const password = 'password';
   static const staffid = 'staffid';
   static const username = 'username';
+  static const proposalid = 'proposalid';
   
 }

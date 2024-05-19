@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 import '../allpackages.dart';
+import '../model/login_model.dart';
  
  
 
@@ -15,7 +16,7 @@ class LoginService {
       print('kkkkkkkkkkkkkkkkkkkkkkk');
       log(data.toString());
       var jsonencode=jsonEncode(data);
-      var response = await http.post(Uri.parse(Urls.login), body: jsonencode);
+      var response = await http.post(Uri.parse('https://professionalelevators.in/api/servicelogin.php'), body: jsonencode);
       var jsonresponse = json.decode(response.body);
       log(jsonresponse.toString());
 

@@ -2,10 +2,18 @@
 
  
  
-import '../allpackages.dart';
-import '../view/home/home_screen.dart';
+ 
+ 
 
  
+
+import 'dart:developer';
+
+import 'package:leadingmanagementsystem/model/login_model.dart';
+import 'package:leadingmanagementsystem/service/login_service.dart';
+import 'package:leadingmanagementsystem/view/homepage.dart';
+
+import '../allpackages.dart';
 
 class LoginController extends GetxController {
   TextEditingController email = TextEditingController();
@@ -15,8 +23,9 @@ class LoginController extends GetxController {
   RxBool isloginLoad = true.obs;
   //otp
 
-  var loginService = LoginService();
+  LoginService loginService = LoginService();
   Future loginController({context}) async {
+    log('enterrr');
     SharedPreferences _sharedPreferences =
         await SharedPreferences.getInstance();
 
@@ -31,18 +40,19 @@ class LoginController extends GetxController {
       }
 
       try {
+        log('enterr1');
         var response = await loginService.loginService(
             email: email.text, password: password.text);
-
+log('enterr2');
         if (response != null) {
+          log(response.email);
           _sharedPreferences.setString(Constants.token, response.token.toString());
           _sharedPreferences.setString(
               Constants.username, response.firstname.toString());
           _sharedPreferences.setString(
               Constants.staffid, response.staffid.toString());
-               _sharedPreferences.setString(
-              Constants.token, response.token.toString());
-         Get.to(HomeScreen());
+              
+         Get.to(HomePage());
           
          
 
@@ -65,7 +75,7 @@ class LoginController extends GetxController {
       sharedPreferences.clear().then((value) {
         email.text='';
         password.text='';
-        // Get.back();
+        //Get.back();
        // Get.offNamed('/login');
       });
     } catch (e) {

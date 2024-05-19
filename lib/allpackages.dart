@@ -4,9 +4,7 @@ export 'package:google_fonts/google_fonts.dart';
 
 export 'package:get/get.dart';
 export 'package:flutter/services.dart';
-export 'controller/controller.dart';
-export 'model/model.dart';
-export 'service/service.dart';
+ 
  
 export 'package:pin_code_fields/pin_code_fields.dart';
 export "package:carousel_slider/carousel_slider.dart";

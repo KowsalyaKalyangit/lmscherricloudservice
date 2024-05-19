@@ -37,7 +37,7 @@ class SmallActionButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: press,
         style: ElevatedButton.styleFrom(
-            primary: bgcolor,
+           
             elevation: elevationvalue,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
@@ -51,3 +51,4 @@ class SmallActionButton extends StatelessWidget {
     );
   }
 }
+

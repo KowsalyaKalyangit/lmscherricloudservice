@@ -4,18 +4,22 @@
 import 'dart:developer';
 
 import 'package:leadingmanagementsystem/allpackages.dart';
-import 'package:leadingmanagementsystem/service/background_service.dart';
+import 'package:leadingmanagementsystem/view/ios_location_screen.dart';
+ 
+ 
 
-import 'package:leadingmanagementsystem/utils/routes.dart';
-
-import 'package:leadingmanagementsystem/view/splash_screen.dart';
+ 
+ 
 import 'package:permission_handler/permission_handler.dart';
+
+import 'splash_screen.dart';
+ 
 
 
 Future main(List<String> args) async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeService();
+ //await initializeService();
 
 
  await Permission.microphone.request();
@@ -47,7 +51,7 @@ class _MyAppState extends State<MyApp> {
 
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        getPages: Routes.routes,
+        //getPages: Routes.routes,
         theme: ThemeData(
           primarySwatch: Colors.teal,
           textSelectionTheme: const TextSelectionThemeData(
@@ -71,4 +75,5 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
- 
+                                       
+  
